@@ -7,7 +7,7 @@ def main(argv):
   maxnum=0
   for v in argv:
       with urllib.request.urlopen(baseurl+urllib.parse.quote(v)) as req:
-          doc = minidom.parseString(req.read())
+          doc = minidom.parseString(req.read().decode('utf-8'))
           num = int(doc.getElementsByTagName('result')[0].getAttribute('numFound'))
           if maxnum<=num:
               maxnum=num
